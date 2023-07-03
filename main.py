@@ -38,15 +38,14 @@ while True:
     if snake.head.distance(food) < 15:
         food.refresh()
         score.add_score()
-        score.print_score()
 
     # collision with walls
     if snake.head.xcor() >= 300 or snake.head.xcor() <= -300:
-        print("hit the walls")
+        score.print_game_over()
         break
 
     if snake.head.ycor() >= 300 or snake.head.ycor() <= -300:
-        print("hit the walls")
+        score.print_game_over()
         break
 
 
