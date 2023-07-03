@@ -25,6 +25,14 @@ class Snake:
             segment.goto(STARTING_POSITIONS[i])
             self.snake.append(segment)
 
+    def grow(self):
+        segment = Turtle()
+        segment.penup()
+        segment.color("white")
+        segment.shape("square")
+        segment.goto(self.snake[len(self.snake) - 1].xcor() - 20, self.snake[len(self.snake) - 1].ycor())
+        self.snake.append(segment)
+
     def up(self):
         print("up")
         if self.head.heading() != 270:

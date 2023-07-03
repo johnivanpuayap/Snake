@@ -4,11 +4,6 @@ from food import Food
 from scoreboard import ScoreBoard
 import time
 
-#   3. Enable user to control the snake
-#   4. Generate food randomly on the game screen
-#   5. Detect collision with the food
-#   6. Create a scoreboard
-#   7. Detect collision with the wall
 #   8. Detect collision with the body
 #   9. Allow users to choose difficulty and adjust the snake's speed accordingly
 
@@ -38,7 +33,7 @@ while True:
     if snake.head.distance(food) < 15:
         food.refresh()
         score.add_score()
-
+        snake.grow()
         if score.get_score() % 10 == 0:
             snake.increase_speed()
 
@@ -51,5 +46,12 @@ while True:
         score.print_game_over()
         break
 
+    # collision with tails
+    for segment in snake.snake:
+        if segment == snake.head:
+            pass
+        elif snake.head.distance(segment) < 10:
+            score.print_game_over()
+            break
 
 screen.exitonclick()
