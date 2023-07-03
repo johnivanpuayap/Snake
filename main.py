@@ -30,9 +30,9 @@ while True:
     snake.move()
 
     # collision with food
-    if snake.head.distance(food) < 15:
+    if snake.head.distance(food) < food.collision_distance:
         food.refresh()
-        score.add_score()
+        score.add_score(food.score)
         snake.grow()
         if score.get_score() % 10 == 0:
             snake.increase_speed()
