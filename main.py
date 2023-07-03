@@ -56,14 +56,12 @@ def start_game():
             score.print_restart()
             break
 
-        # collision with tails
-        for segment in snake.snake:
-            if segment == snake.head:
-                pass
-            elif snake.head.distance(segment) < 10:
+        # collision with tail
+        for segment in snake.snake[1:]:
+            if snake.head.distance(segment) < 10:
                 score.print_game_over()
                 score.print_restart()
-                break
+                is_game_on = False
 
 
 def restart_game():
