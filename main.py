@@ -1,6 +1,7 @@
 from turtle import Screen
 from snake import Snake
 from food import Food
+from scoreboard import ScoreBoard
 import time
 
 #   3. Enable user to control the snake
@@ -20,6 +21,7 @@ screen.tracer(0)
 screen.update()
 snake = Snake()
 food = Food()
+score = ScoreBoard()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
@@ -35,6 +37,8 @@ while True:
     # collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
+        score.add_score()
+        score.print_score()
 
     # collision with walls
     if snake.head.xcor() >= 300 or snake.head.xcor() <= -300:
