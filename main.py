@@ -31,13 +31,16 @@ screen.onkey(snake.right, "Right")
 
 while True:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(snake.speed)
     snake.move()
 
     # collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
         score.add_score()
+
+        if score.get_score() % 10 == 0:
+            snake.increase_speed()
 
     # collision with walls
     if snake.head.xcor() >= 300 or snake.head.xcor() <= -300:

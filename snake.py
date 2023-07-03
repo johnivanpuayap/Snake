@@ -6,6 +6,7 @@ MOVE_DISTANCE = 20
 
 class Snake:
     def __init__(self):
+        self.speed = 0.1
         self.snake = []
         self.create_snake()
         self.head = self.snake[0]
@@ -44,3 +45,7 @@ class Snake:
         print("left")
         if self.head.heading() != 0:
             self.head.setheading(180)
+
+    def increase_speed(self):
+        if self.speed > 0:
+            self.speed -= 0.01
