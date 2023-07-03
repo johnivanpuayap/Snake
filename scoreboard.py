@@ -28,5 +28,15 @@ class ScoreBoard(Turtle):
         self.write("Game Over", True, align="center", font=FONT)
         self.hideturtle()
 
+    def print_restart(self):
+        self.goto(0, -20)
+        self.write("Press 'r' or 'R' to Restart the Game", True, align="center", font=("Courier", 12, "normal"))
+        self.hideturtle()
+
     def get_score(self):
         return self.score
+
+    def reset_score(self):
+        self.clear()
+        self.score = 0
+        self.print_score()

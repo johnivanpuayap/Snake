@@ -5,6 +5,10 @@ MOVE_DISTANCE = 20
 
 
 class Snake:
+    EASY_SPEED = 0.1
+    MEDIUM_SPEED = 0.08
+    HARD_SPEED = 0.06
+
     def __init__(self):
         self.speed = 0.1
         self.snake = []
@@ -57,3 +61,10 @@ class Snake:
     def increase_speed(self):
         if self.speed > 0:
             self.speed -= 0.01
+
+    def reset_position(self):
+        for segment in self.snake:
+            segment.hideturtle()
+        self.snake = []
+        self.create_snake()
+        self.head = self.snake[0]

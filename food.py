@@ -37,3 +37,6 @@ class Food(Turtle):
         self.shapesize(stretch_len=2, stretch_wid=2)
         self.collision_distance = 25
         self.score = 5
+
+    def hide(self):
+        self.clear()
