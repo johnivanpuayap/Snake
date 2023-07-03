@@ -16,9 +16,9 @@ class Food(Turtle):
 
     def refresh(self):
         chance = random.randint(1, 10)
-        if chance == 10:
+        if chance <= 1:
             self.big_circle()
-        elif chance >= 8:
+        elif chance <= 3:
             self.medium_circle()
         else:
             self.small_circle()
