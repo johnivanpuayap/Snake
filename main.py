@@ -1,7 +1,7 @@
 from turtle import Screen
 from snake import Snake
+from food import Food
 import time
-import random
 
 #   3. Enable user to control the snake
 #   4. Generate food randomly on the game screen
@@ -19,6 +19,7 @@ screen.title("Snake Game")
 screen.tracer(0)
 screen.update()
 snake = Snake()
+food = Food()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
@@ -30,5 +31,19 @@ while True:
     screen.update()
     time.sleep(0.1)
     snake.move()
+
+    # collision with food
+    if snake.head.distance(food) < 15:
+        food.reposition()
+
+    # collision with walls
+    if snake.head.xcor() >= 300 or snake.head.xcor() <= -300:
+        print("hit the walls")
+        break
+
+    if snake.head.ycor() >= 300 or snake.head.ycor() <= -300:
+        print("hit the walls")
+        break
+
 
 screen.exitonclick()
