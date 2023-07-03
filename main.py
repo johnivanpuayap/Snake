@@ -9,7 +9,7 @@ def start_game():
     difficulty = screen.textinput("Game Difficulty", "Select difficulty (easy, medium, hard): ")
 
     if difficulty is None:
-        screen.bye()
+        exit
 
     if difficulty.lower() == 'medium':
         snake.speed = snake.MEDIUM_SPEED
