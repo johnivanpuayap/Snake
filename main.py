@@ -46,8 +46,9 @@ def start_game():
             score.add_score(food.score)
             food.refresh()
             snake.grow()
-            if score.get_score() % 10 == 0:
+            if score.get_score() >= score.milestone:
                 snake.increase_speed()
+                score.milestone += 10
 
         # collision with walls
         if snake.head.xcor() >= 300 or snake.head.xcor() <= -300 or snake.head.ycor() >= 300 or snake.head.ycor() <= -300:

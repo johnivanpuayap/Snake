@@ -40,3 +40,4 @@ class Food(Turtle):
 
     def hide(self):
         self.clear()
+        self.refresh()

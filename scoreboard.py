@@ -9,6 +9,7 @@ class ScoreBoard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
+        self.milestone = 10
         self.color("white")
         self.penup()
         self.print_score()
@@ -39,4 +40,5 @@ class ScoreBoard(Turtle):
     def reset_score(self):
         self.clear()
         self.score = 0
+        self.milestone = 10
         self.print_score()
