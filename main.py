@@ -18,31 +18,37 @@ snake = Snake()
 food = Food()
 score = ScoreBoard()
 
+is_game_on = False
 screen.listen()
 screen.onkey(snake.up, "Up")
+screen.onkey(snake.up, "w")
+screen.onkey(snake.up, "W")
 screen.onkey(snake.down, "Down")
+screen.onkey(snake.down, "s")
+screen.onkey(snake.down, "S")
 screen.onkey(snake.left, "Left")
+screen.onkey(snake.left, "a")
+screen.onkey(snake.left, "A")
 screen.onkey(snake.right, "Right")
+screen.onkey(snake.right, "d")
+screen.onkey(snake.right, "D")
 
-while True:
+
+while is_game_on:
     screen.update()
     time.sleep(snake.speed)
     snake.move()
 
     # collision with food
     if snake.head.distance(food) < food.collision_distance:
-        food.refresh()
         score.add_score(food.score)
+        food.refresh()
         snake.grow()
         if score.get_score() % 10 == 0:
             snake.increase_speed()
 
     # collision with walls
-    if snake.head.xcor() >= 300 or snake.head.xcor() <= -300:
-        score.print_game_over()
-        break
-
-    if snake.head.ycor() >= 300 or snake.head.ycor() <= -300:
+    if snake.head.xcor() >= 300 or snake.head.xcor() <= -300 or snake.head.ycor() >= 300 or snake.head.ycor() <= -300:
         score.print_game_over()
         break
 
