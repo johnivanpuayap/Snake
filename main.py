@@ -34,7 +34,7 @@ while True:
 
     # collision with food
     if snake.head.distance(food) < 15:
-        food.reposition()
+        food.refresh()
 
     # collision with walls
     if snake.head.xcor() >= 300 or snake.head.xcor() <= -300:

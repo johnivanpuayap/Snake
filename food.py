@@ -11,7 +11,7 @@ class Food(Turtle):
         self.speed("fastest")
         self.penup()
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
-        self.reposition()
+        self.refresh()
 
     def refresh(self):
         self.goto(random.randint(-280, 280), random.randint(-280, 280))
