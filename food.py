@@ -25,16 +25,17 @@ class Food(Turtle):
         self.goto(random.randint(-280, 280), random.randint(-280, 280))
 
     def small_circle(self):
-        self.shapesize(stretch_len=0.5, stretch_wid=0.5)
+        self.shapesize(0.5)
         self.collision_distance = 15
         self.score = 1
 
     def medium_circle(self):
+        self.shapesize(1)
         self.collision_distance = 20
         self.score = 3
 
     def big_circle(self):
-        self.shapesize(stretch_len=2, stretch_wid=2)
+        self.shapesize(2)
         self.collision_distance = 25
         self.score = 5
 
