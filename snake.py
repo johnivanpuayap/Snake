@@ -1,8 +1,6 @@
 from turtle import Turtle
-
-STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
+import random
 MOVE_DISTANCE = 20
-
 
 class Snake:
     EASY_SPEED = 0.1
@@ -21,12 +19,15 @@ class Snake:
         self.head.forward(MOVE_DISTANCE)
 
     def create_snake(self):
+        # randomize the starting x and y position
+        xcor = random.randint(-250, 250)
+        ycor = random.randint(-250, 250)
         for i in range(3):
             segment = Turtle()
             segment.penup()
             segment.color("white")
             segment.shape("square")
-            segment.goto(STARTING_POSITIONS[i])
+            segment.goto(xcor - (20*i), ycor)
             self.snake.append(segment)
 
     def grow(self):
