@@ -2,6 +2,7 @@ from turtle import Turtle
 import random
 MOVE_DISTANCE = 20
 
+
 class Snake:
     EASY_SPEED = 0.1
     MEDIUM_SPEED = 0.08
