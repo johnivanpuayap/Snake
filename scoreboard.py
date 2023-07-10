@@ -1,7 +1,7 @@
 from turtle import Turtle
 import random
 
-FONT = ("Courier", 24, "normal")
+FONT = ("Courier", 15, "normal")
 
 
 class ScoreBoard(Turtle):
@@ -9,6 +9,7 @@ class ScoreBoard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
+        self.high_score = 0
         self.milestone = 10
         self.color("white")
         self.penup()
@@ -17,7 +18,9 @@ class ScoreBoard(Turtle):
     def print_score(self):
         self.clear()
         self.goto(0, 260)
-        self.write(f"Score: {self.score}", True, align="center", font=FONT)
+        self.write(f"Score:{self.score}", True, align="center", font=FONT)
+        self.goto(0, 240)
+        self.write(f"High Score:{self.high_score}", True, align="center", font=FONT)
         self.hideturtle()
 
     def add_score(self, add_score):
@@ -38,6 +41,8 @@ class ScoreBoard(Turtle):
         return self.score
 
     def reset_score(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
         self.clear()
         self.score = 0
         self.milestone = 10
