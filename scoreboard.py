@@ -13,7 +13,6 @@ class ScoreBoard(Turtle):
         self.milestone = 10
         self.color("white")
         self.penup()
-        self.print_score()
 
     def print_score(self):
         self.clear()
