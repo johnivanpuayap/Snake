@@ -2,10 +2,21 @@ from turtle import Screen
 from snake import Snake
 from food import Food
 from scoreboard import ScoreBoard
+from menu import Menu
 import time
 
 
+def play_game():
+    if is_on_menu:
+        start_game()
+
+
 def start_game():
+    global is_on_menu
+    is_on_menu = False
+
+    menu.clear()
+
     difficulty = screen.textinput("Game Difficulty", "Select difficulty (easy, medium, hard): ")
 
     if difficulty is None:
@@ -19,21 +30,8 @@ def start_game():
         snake.speed = snake.EASY_SPEED
 
     screen.listen()
-    screen.onkey(snake.up, "Up")
-    screen.onkey(snake.up, "w")
-    screen.onkey(snake.up, "W")
-    screen.onkey(snake.down, "Down")
-    screen.onkey(snake.down, "s")
-    screen.onkey(snake.down, "S")
-    screen.onkey(snake.left, "Left")
-    screen.onkey(snake.left, "a")
-    screen.onkey(snake.left, "A")
-    screen.onkey(snake.right, "Right")
-    screen.onkey(snake.right, "d")
-    screen.onkey(snake.right, "D")
-    screen.onkey(restart_game, "R")
-    screen.onkey(restart_game, "r")
 
+    score.print_score()
     is_game_on = True
 
     while is_game_on:
@@ -78,10 +76,39 @@ screen.colormode(255)
 screen.title("Snake Game")
 screen.tracer(0)
 screen.update()
+
+# Create Snake
 snake = Snake()
+
+# Snake Controls
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.up, "w")
+screen.onkey(snake.up, "W")
+screen.onkey(snake.down, "Down")
+screen.onkey(snake.down, "s")
+screen.onkey(snake.down, "S")
+screen.onkey(snake.left, "Left")
+screen.onkey(snake.left, "a")
+screen.onkey(snake.left, "A")
+screen.onkey(snake.right, "Right")
+screen.onkey(snake.right, "d")
+screen.onkey(snake.right, "D")
+
+# Game Controls
+screen.onkey(restart_game, "R")
+screen.onkey(restart_game, "r")
+screen.onkey(play_game, "P")
+screen.onkey(play_game, "p")
+screen.listen()
+
+# Create Food
 food = Food()
+
+# Create Scoreboard
 score = ScoreBoard()
 
-start_game()
+# Create Main Menu
+is_on_menu = True
+menu = Menu()
 
 screen.exitonclick()
